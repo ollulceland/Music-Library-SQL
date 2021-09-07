@@ -23,3 +23,8 @@ constraint PK_song primary key (song_ID), constraint FK_album_song foreign key (
 CREATE table genre (genre_ID int NOT NULL auto_increment, genre_name VARCHAR(50) NOT NULL, album_ID int NOT NULL,
 constraint PK_genre primary key (genre_ID), constraint FK_album_genre foreign key (album_ID)
 REFERENCES album (album_ID));
+
+-- insert artisits names
+
+INSERT INTO artist (artist_name) VALUES ("John Legend");
+INSERT INTO artist (artist_name) VALUES ("Amy Winehouse");
