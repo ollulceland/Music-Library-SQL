@@ -28,3 +28,4 @@ REFERENCES album (album_ID));
 
 INSERT INTO artist (artist_name) VALUES ("John Legend");
 INSERT INTO artist (artist_name) VALUES ("Amy Winehouse");
+
