@@ -77,7 +77,7 @@ FROM artist art
 LEFT JOIN album al
 ON art.artist_ID = al.artist_ID;
 
--- join artists with album and release year, ascending order
+-- join artists with album and release year ascending order
 
 SELECT art.artist_name, al.album_name, r.release_year
 FROM artist art
@@ -86,8 +86,6 @@ ON art.artist_ID = al.artist_ID
 LEFT JOIN album_release_year r
 ON al.album_ID = r.album_ID
 ORDER BY release_year asc;
-
-
 
 -- Q5) subquery
 -- select only the Grammy winning albums
@@ -101,7 +99,7 @@ ON al.award_ID = aw.award_ID
 WHERE award_name IN (
 SELECT award_name FROM award WHERE award_name = "Grammy");
 
--- select artist name, album name and any awards (subquery and order by)
+-- artist name, album name and any awards (subquery and order by)
 
 SELECT art.artist_name, al.album_name, aw.award_name
 FROM artist art
@@ -111,7 +109,7 @@ LEFT JOIN award aw
 ON al.award_ID = aw.award_ID
 ORDER BY album_name asc;
 
--- select albums that won an award, don't included those just nominated
+-- select albums that won an award, not just nominated
 
 SELECT art.artist_name, al.album_name, aw.award_name
 FROM artist art
@@ -120,5 +118,17 @@ ON art.artist_ID = al.artist_ID
 LEFT JOIN award aw
 ON al.award_ID = aw.award_ID
 WHERE aw.award_ID != "5";
+
+-- Q11) group by query
+-- count number of albums under each genre (count albums in each genre), order by count size
+
+SELECT genre_name, COUNT(album_ID) AS Count
+FROM album al
+LEFT JOIN genre gen
+ON al.genre_ID = gen.genre_ID
+GROUP BY genre_name ORDER BY Count desc;
+
+
+
 
 
