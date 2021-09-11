@@ -15,7 +15,7 @@ CORE REQUIREMENTS
 ✓ Create DB diagram where all table relations are shown
 
 
-ADVANCED OPTIONS (choose 2-3)
+ADVANCED OPTIONS (all compulsory)
 
 ✓ In your database, create a stored procedure and demonstrate how it runs
 
