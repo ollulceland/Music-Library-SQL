@@ -1,6 +1,8 @@
 -- Project for CFG
 -- A music database
 
+-- Q1) Create 8 tables
+
 CREATE DATABASE music;
 USE music;
 
@@ -36,7 +38,7 @@ CREATE table album_release_year (album_ID int NOT NULL, release_year year,
 constraint PK_album primary key (album_ID), constraint FK_album_release foreign key (album_ID)
 REFERENCES album (album_ID));
 
--- insert values into tables
+-- Q2) insert values into tables
 
 INSERT into record_label (label_ID, label_name) VALUES (1, "Columbia Records"), (2, "Island Records"),
 (3, "Aftermath Entertainment"), (4, "Neighbourhood"), (5, "Sony Music Entertainment"),
@@ -46,7 +48,7 @@ INSERT into genre (genre_ID, genre_name) VALUES (1, "Soul"), (2, "Hip-Hop"), (3,
 (4, "Pop"), (5, "Rock");
 
 INSERT into award (award_ID, award_name) VALUES (1, "Grammy"), (2, "Billboard"),
-(3, "Brit Award"), (4, "Juno Award"), (5, "Only nominated");
+(3, "Brit Award"), (4, "Juno Award"), (5, null);
 
 INSERT INTO artist (artist_ID, artist_name) VALUES (1, "50 Cent"), (2, "Amy Winehouse"), (3, "Britney Spears"),
 (4, "Dave"), (5, "John Legend"),(6, "Journey"), (7, "Michael Jackson"), (8, "Nickleback");
@@ -65,4 +67,58 @@ INSERT into album_price (album_ID, price) VALUES (1, 8.99), (2, 11.99), (3, 7.99
 
 INSERT into album_release_year (album_ID, release_year) VALUES (1, 2013), (2, 2006), (3, 2003), (4, 2019),
 (5, 1987), (6, 2003), (7, 2005), (8, 1981);
+
+-- Q3) join tables
+
+-- join artist name with album
+
+SELECT art.artist_name, al.album_name
+FROM artist art
+LEFT JOIN album al
+ON art.artist_ID = al.artist_ID;
+
+-- join artists with album and release year, ascending order
+
+SELECT art.artist_name, al.album_name, r.release_year
+FROM artist art
+LEFT JOIN album al
+ON art.artist_ID = al.artist_ID
+LEFT JOIN album_release_year r
+ON al.album_ID = r.album_ID
+ORDER BY release_year asc;
+
+
+
+-- Q5) subquery
+-- select only the Grammy winning albums
+
+SELECT art.artist_name, al.album_name, aw.award_name
+FROM artist art
+LEFT JOIN album al
+ON art.artist_ID = al.artist_ID
+LEFT JOIN award aw
+ON al.award_ID = aw.award_ID
+WHERE award_name IN (
+SELECT award_name FROM award WHERE award_name = "Grammy");
+
+-- select artist name, album name and any awards (subquery and order by)
+
+SELECT art.artist_name, al.album_name, aw.award_name
+FROM artist art
+LEFT JOIN album al
+ON art.artist_ID = al.artist_ID
+LEFT JOIN award aw
+ON al.award_ID = aw.award_ID
+ORDER BY album_name asc;
+
+-- select albums that won an award, don't included those just nominated
+
+SELECT art.artist_name, al.album_name, aw.award_name
+FROM artist art
+LEFT JOIN album al
+ON art.artist_ID = al.artist_ID
+LEFT JOIN award aw
+ON al.award_ID = aw.award_ID
+WHERE aw.award_ID != "5";
+
 
