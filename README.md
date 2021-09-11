@@ -2,7 +2,7 @@
 
 CORE REQUIREMENTS
 
-✓ Create relational DB of your choice with minimum 5 tables
+✓ Create relational DB of your choice with minimum 8 tables
 
 ✓ Set Primary and Foreign Key constraints to create relations between the tables
 
