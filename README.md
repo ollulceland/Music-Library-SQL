@@ -6,7 +6,7 @@ CORE REQUIREMENTS
 
 ✓ Set Primary and Foreign Key constraints to create relations between the tables
 
-✓ Using any type of the joins create a view that combines multipletables in a logical way
+✓ Using any type of the joins create a view that combines multiple tables in a logical way
 
 ✓ In your database, create a stored function that can be applied to a query in your DB
 
