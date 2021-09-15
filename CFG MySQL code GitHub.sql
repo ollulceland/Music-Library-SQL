@@ -87,6 +87,10 @@ LEFT JOIN album_release_year r
 ON al.album_ID = r.album_ID
 ORDER BY release_year asc;
 
+
+-- Q4) Create a stored function
+
+
 -- Q5) subquery
 -- select only the Grammy winning albums
 
@@ -119,6 +123,65 @@ LEFT JOIN award aw
 ON al.award_ID = aw.award_ID
 WHERE aw.award_ID != "5";
 
+-- Q6) Download screenshot of EER diagram
+
+-- Q7) Create stored pocedure and show how it runs
+-- insert new artist id and name into artist table
+
+SELECT * FROM artist;
+DELIMITER //
+-- Create Stored Procedure
+CREATE PROCEDURE InsertValue(
+IN artist_id INT,
+IN artist_name VARCHAR(50))
+
+BEGIN
+INSERT INTO artist(artist_id, artist_name)
+VALUES (9, "Adele");
+END//
+
+DELIMITER ;
+
+SELECT * FROM artist;
+-- drop procedure insertvalue;
+
+
+-- Q8) In your database, create a trigger and demonstrate how it runs
+
+
+-- Q9) Create an event and demonstrate how it works ??????
+
+SET GLOBAL event_scheduler = ON; -- enable event scheduler.
+SELECT @@event_scheduler; 
+CREATE EVENT myevent
+    ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 second
+    DO
+      UPDATE music.album_release_year SET mycol = release_year + 1;
+show events from music;
+      
+drop event myevent;
+
+
+
+-- Q10) Create a view that uses at least 3-4 base tables
+-- Create view pre2010 albums that cost at least £7.99
+
+CREATE VIEW pre2010 AS
+SELECT art.artist_name, al.album_name, res.release_year, pr.price
+FROM artist art
+LEFT JOIN album al
+ON art.artist_id = al.artist_id
+LEFT JOIN album_release_year res
+ON al.album_id = res.album_id
+LEFT JOIN album_price pr
+ON al.album_id = pr.album_id
+WHERE release_year < 2010
+AND price >= 7.99
+ORDER BY price desc;
+
+-- drop view pre2010;
+
+
 -- Q11) group by query
 -- count number of albums under each genre (count albums in each genre), order by count size
 
@@ -127,8 +190,5 @@ FROM album al
 LEFT JOIN genre gen
 ON al.genre_ID = gen.genre_ID
 GROUP BY genre_name ORDER BY Count desc;
-
-
-
 
 
