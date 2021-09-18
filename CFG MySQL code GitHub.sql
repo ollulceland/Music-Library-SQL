@@ -89,7 +89,26 @@ ORDER BY release_year asc;
 
 
 -- Q4) Create a stored function
+SELECT * FROM album_price;
+DELIMITER //
+CREATE FUNCTION price_range(album_price FLOAT)
+RETURNS DECIMAL(5,2)
+DETERMINISTIC
+BEGIN
+	DECLARE rate DECIMAL(5,2);
+    IF album_price > 10.99 THEN
+		SET rate = 'High';
+	ELSEIF (album_price >= 8.99 AND album_price <= 10.99) THEN
+		SET rate = 'Medium';
+	ELSEIF (album_price < 8.99) THEN
+		SET rate = 'Low';
+	END IF;
+    RETURN (album_price);
+END//
+DELIMITER;
 
+SELECT * FROM album_price;
+-- drop function price_range;
 
 -- Q5) subquery
 -- select only the Grammy winning albums
