@@ -167,23 +167,36 @@ SELECT * FROM artist;
 
 
 -- Q8) In your database, create a trigger and demonstrate how it runs
-SELECT * FROM album_price;
+-- Create a trigger that will add a message on albums that did not win a Grammy Award
+
+DROP TABLE IF EXISTS reminders;
+CREATE TABLE reminders (
+	ID INT AUTO_INCREMENT,
+    album_ID INT,
+    message VARCHAR(255) NOT NULL,
+    PRIMARY KEY (ID, album_ID)
+);
 DELIMITER //
-    
-CREATE TRIGGER album_price_in_dollar
-AFTER INSERT ON trigger_album_price FOR EACH ROW
-BEGIN
-	UPDATE trigger_items
-    SET price = (NEW.cost * 1.37)
-    WHERE item_id = NEW.item_id;
-END//
 
--- update DATA
-UPDATE album_price
-SET price = 10.99
-WHERE album_ID = 1;
+CREATE TRIGGER after_album_insert
+	AFTER INSERT 
+	ON album FOR EACH ROW
+    BEGIN
+		IF New.award_name = NULL THEN
+        INSERT INTO reminders(album_ID, message)
+        VALUES(new.id, CONCAT( 'Still a good album!'));
+        END IF;
+END //
 
-SELECT * music.album_price;
+DELIMITER ;
+
+-- testing the INSERT trigger
+
+INSERT INTO album(name, award_name),
+VALUES
+	('Love in the Future', NULL)
+SELECT * FROM albums;
+SELECT * FROM reminders;
 
 -- Q9) Create an event and demonstrate how it works ??????
 
