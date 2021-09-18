@@ -166,7 +166,23 @@ SELECT * FROM artist;
 
 
 -- Q8) In your database, create a trigger and demonstrate how it runs
+SELECT * FROM album_price;
+DELIMITER //
+    
+CREATE TRIGGER album_price_in_dollar
+AFTER INSERT ON trigger_album_price FOR EACH ROW
+BEGIN
+	UPDATE trigger_items
+    SET price = (NEW.cost * 1.37)
+    WHERE item_id = NEW.item_id;
+END//
 
+-- update DATA
+UPDATE album_price
+SET price = 10.99
+WHERE album_ID = 1;
+
+SELECT * music.album_price;
 
 -- Q9) Create an event and demonstrate how it works ??????
 
