@@ -89,23 +89,24 @@ ORDER BY release_year asc;
 
 
 -- Q4) Create a stored function
-SELECT * FROM album_price;
 DELIMITER //
-CREATE FUNCTION price_range(album_price DECIMAL)
-RETURNS DECIMAL(5,2)
+CREATE FUNCTION price_range(
+    album_price DECIMAL
+)
+RETURNS VARCHAR(20)
 DETERMINISTIC
 BEGIN
-	DECLARE rate DECIMAL(5,2);
+    DECLARE rate VARCHAR(20);
     IF album_price > 10.99 THEN
-		SET rate = 'High';
-	ELSEIF (album_price >= 8.99 AND album_price <= 10.99) THEN
-		SET rate = 'Medium';
-	ELSEIF (album_price < 8.99) THEN
-		SET rate = 'Low';
-	END IF;
-    RETURN (album_price);
+        SET rate = 'HIGH';
+    ELSEIF album_price >= 8.99 AND album_price <= 10.99) THEN
+        SET rate = 'MEDIUM';
+    ELSEIF album_price < 8.99 THEN
+        SET rate = 'LOW';
+    END IF;
+    RETURN (rate);
 END//
-DELIMITER;
+DELIMITER ;
 
 SELECT * FROM album_price;
 -- drop function price_range;
