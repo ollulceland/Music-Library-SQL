@@ -91,7 +91,7 @@ ORDER BY release_year asc;
 -- Q4) Create a stored function
 SELECT * FROM album_price;
 DELIMITER //
-CREATE FUNCTION price_range(album_price FLOAT)
+CREATE FUNCTION price_range(album_price DECIMAL)
 RETURNS DECIMAL(5,2)
 DETERMINISTIC
 BEGIN
