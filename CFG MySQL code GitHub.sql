@@ -89,26 +89,33 @@ ORDER BY release_year asc;
 
 
 -- Q4) Create a stored function
+-- add price rate to album prices, show album name price and price rate
+
 DELIMITER //
 CREATE FUNCTION price_range(
-    album_price DECIMAL
+    price DECIMAL
 )
 RETURNS VARCHAR(20)
 DETERMINISTIC
 BEGIN
     DECLARE rate VARCHAR(20);
-    IF album_price > 10.99 THEN
+    IF price > 10.99 THEN
         SET rate = 'HIGH';
-    ELSEIF album_price >= 8.99 AND album_price <= 10.99 THEN
+    ELSEIF price >= 8.99 AND price <= 10.99 THEN
         SET rate = 'MEDIUM';
-    ELSEIF album_price < 8.99 THEN
+    ELSEIF price < 8.99 THEN
         SET rate = 'LOW';
     END IF;
     RETURN (rate);
 END//
 DELIMITER ;
 
-SELECT * FROM album_price;
+SELECT pr.album_ID, al.album_name, price, price_range(price)
+FROM album_price pr
+LEFT JOIN album al
+ON al.album_ID = pr.album_id
+ORDER BY price desc;
+
 -- drop function price_range;
 
 -- Q5) subquery
