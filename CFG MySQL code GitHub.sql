@@ -156,6 +156,7 @@ WHERE aw.award_ID != "5";
 -- insert new artist id and name into artist table
 
 SELECT * FROM artist;
+
 DELIMITER //
 -- Create Stored Procedure
 CREATE PROCEDURE InsertValue(
@@ -164,10 +165,11 @@ IN artist_name VARCHAR(50))
 
 BEGIN
 INSERT INTO artist(artist_id, artist_name)
-VALUES (9, "Adele");
+VALUES (artist_ID, artist_name);
 END//
 
 DELIMITER ;
+CALL InsertValue (9, 'Adele');
 
 SELECT * FROM artist;
 -- drop procedure insertvalue;
