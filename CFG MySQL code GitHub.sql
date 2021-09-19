@@ -118,6 +118,7 @@ ORDER BY price desc;
 
 -- drop function price_range;
 
+
 -- Q5) subquery
 -- select only the Grammy winning albums
 
@@ -172,59 +173,36 @@ DELIMITER ;
 CALL InsertValue (9, 'Adele');
 
 SELECT * FROM artist;
-
 -- SET SQL_SAFE_UPDATES = 0;
 -- DELETE FROM artist WHERE artist_name = "Adele"
 
 
 -- Q8) In your database, create a trigger and demonstrate how it runs
--- Create a trigger that will add a message on albums that did not win a Grammy Award
+-- capitalise all letters in any artist names entered into tables
 
-DROP TABLE IF EXISTS reminders;
-CREATE TABLE reminders (
-	ID INT AUTO_INCREMENT,
-    album_ID INT,
-    message VARCHAR(255) NOT NULL,
-    PRIMARY KEY (ID, album_ID)
-);
+SELECT * FROM artist;
 DELIMITER //
 
-CREATE TRIGGER after_album_insert
-	AFTER INSERT 
-	ON album FOR EACH ROW
-    BEGIN
-		IF New.award_name = NULL THEN
-        INSERT INTO reminders(album_ID, message)
-        VALUES(new.id, CONCAT( 'Still a good album!'));
-        END IF;
-END //
-
+CREATE TRIGGER Before_Insert
+BEFORE INSERT on artist
+FOR EACH ROW
+BEGIN
+    SET NEW.artist_name = UPPER(NEW.artist_name);
+END//
 DELIMITER ;
+INSERT INTO artist (artist_ID, artist_name)
+VALUES (10, "drake");
 
--- testing the INSERT trigger
+SELECT * FROM artist;
+-- drop trigger before_insert;
 
-INSERT INTO album(name, award_name),
-VALUES
-	('Love in the Future', NULL)
-SELECT * FROM albums;
-SELECT * FROM reminders;
 
 -- Q9) Create an event and demonstrate how it works ??????
-
-SET GLOBAL event_scheduler = ON; -- enable event scheduler.
-SELECT @@event_scheduler; 
-CREATE EVENT myevent
-    ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 second
-    DO
-      UPDATE music.album_release_year SET mycol = release_year + 1;
-show events from music;
-      
-drop event myevent;
 
 
 
 -- Q10) Create a view that uses at least 3-4 base tables
--- Create view pre2010 albums that cost at least £7.99
+-- Create view showing all pre2010 albums that cost at least £7.99
 
 CREATE VIEW pre2010 AS
 SELECT art.artist_name, al.album_name, res.release_year, pr.price
@@ -241,10 +219,8 @@ ORDER BY price desc;
 
 SELECT * FROM music.pre2010;
 
--- drop view pre2010;
 
-
--- Q11) group by query
+-- Q11) Use a group by query
 -- count number of albums under each genre (count albums in each genre), order by count size
 
 SELECT genre_name, COUNT(album_ID) AS Count
