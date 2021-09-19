@@ -237,6 +237,8 @@ WHERE release_year < 2010
 AND price >= 7.99
 ORDER BY price desc;
 
+SELECT * FROM music.pre2010;
+
 -- drop view pre2010;
 
 
