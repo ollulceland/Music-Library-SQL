@@ -99,7 +99,7 @@ BEGIN
     DECLARE rate VARCHAR(20);
     IF album_price > 10.99 THEN
         SET rate = 'HIGH';
-    ELSEIF album_price >= 8.99 AND album_price <= 10.99) THEN
+    ELSEIF album_price >= 8.99 AND album_price <= 10.99 THEN
         SET rate = 'MEDIUM';
     ELSEIF album_price < 8.99 THEN
         SET rate = 'LOW';
