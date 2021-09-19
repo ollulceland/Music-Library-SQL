@@ -172,7 +172,9 @@ DELIMITER ;
 CALL InsertValue (9, 'Adele');
 
 SELECT * FROM artist;
--- drop procedure insertvalue;
+
+-- SET SQL_SAFE_UPDATES = 0;
+-- DELETE FROM artist WHERE artist_name = "Adele"
 
 
 -- Q8) In your database, create a trigger and demonstrate how it runs
