@@ -200,7 +200,7 @@ SELECT * FROM artist;
 -- Q9) Create an event and demonstrate how it works ??????
 -- one time event
 SET GLOBAL event_scheduler = ON; -- enable event scheduler.
-USE practice;
+USE music;
 
 CREATE TABLE monitoring_events
 (ID INT NOT NULL AUTO_INCREMENT, 
