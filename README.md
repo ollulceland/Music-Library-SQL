@@ -1,28 +1,36 @@
-# Music-Library-SQL
+# Music-Database
 
-CORE REQUIREMENTS
+## This is the final project of _Code First: Girls x Coding Kickstarter - (Remote) Introduction to Data and SQL Programming_. Our goal is to create a relational music database that contains with minimum 8 tables.
 
-1. Create relational DB of your choice with minimum 8 tables
+### Minimum tasks include:
 
-2. Set Primary and Foreign Key constraints to create relations between the tables
+- [x]Create relational DB of your choice with minimum 8 tables
 
-3. Using any type of the joins create a view that combines multiple tables in a logical way
+- [x]Set Primary and Foreign Key constraints to create relations between the tables
 
-4. In your database, create a stored function that can be applied to a query in your DB
+- [x]Using any type of the joins create a view that combines multiple tables in a logical way
 
-5. Prepare an example query with a subquery to demonstrate how to extract data from your DB for analysis
+- [x]In your database, create a stored function that can be applied to a query in your DB
 
-6. Create DB diagram where all table relations are shown
+- [x]Prepare an example query with a subquery to demonstrate how to extract data from your DB for analysis
+
+- [x]Create DB diagram where all table relations are shown
 
 
-ADVANCED OPTIONS (all compulsory)
+### Some advanced options:
 
-7. In your database, create a stored procedure and demonstrate how it runs
+- [x]In your database, create a stored procedure and demonstrate how it runs
 
-8. In your database, create a trigger and demonstrate how it runs
+- [x]In your database, create a trigger and demonstrate how it runs
 
-9. In your database, create an event and demonstrate how it runs
+- [x]In your database, create an event and demonstrate how it runs
 
-10. Create a view that uses at least 3-4 base tables; prepare and demonstrate a query that uses the view to produce a logically arranged result set for analysis.
+- [x]Create a view that uses at least 3-4 base tables; prepare and demonstrate a query that uses the view to produce a logically arranged result set for analysis.
 
-11. Prepare an example query with group by and having to demonstrate how to extract data from your DB for analysis
+- [x]Prepare an example query with group by and having to demonstrate how to extract data from your DB for analysis
+
+- - - -- - - -
+>> For this project, **MYSQL** engine and **WorkBench** IDE needs to be installed.
+
+
+
