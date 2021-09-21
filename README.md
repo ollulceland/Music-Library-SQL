@@ -3,7 +3,7 @@
 ## Project Brief:
 
 This is the final project of _Code First: Girls x Coding Kickstarter - (Remote) Introduction to Data and SQL Programming_. \
-For this project, **MYSQL** engine and **WorkBench** IDE need to be installed. \\
+For this project, **MYSQL** engine and **WorkBench** IDE need to be installed. \
 Our goal is to create a music database with SQL programming.:grinning:
 
 - - - -- - - -
