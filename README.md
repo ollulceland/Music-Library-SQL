@@ -1,6 +1,8 @@
 # Music-Database
 
-## This is the final project of _Code First: Girls x Coding Kickstarter - (Remote) Introduction to Data and SQL Programming_. Our goal is to create a relational music database that contains with minimum 8 tables.
+## Project Brief:
+
+This is the final project of _Code First: Girls x Coding Kickstarter - (Remote) Introduction to Data and SQL Programming_. Our goal is to create a relational music database that contains with minimum 8 tables.
 
 ### Minimum tasks include:
 
