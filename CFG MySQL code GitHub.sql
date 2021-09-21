@@ -197,7 +197,7 @@ SELECT * FROM artist;
 -- drop trigger before_insert;
 
 
--- Q9) Create an event and demonstrate how it works ??????
+-- Q9) Create an event and demonstrate how it works
 -- Turn ON Event Scheduler
 -- one time event
 
@@ -205,22 +205,23 @@ SET GLOBAL event_scheduler = ON; -- enable event scheduler.
 USE music;
 
 CREATE TABLE album_release_year
-(ID INT NOT NULL AUTO_INCREMENT, 
+(ID INT NOT NULL AUTO_INCREMENT,
 Last_Update TIMESTAMP,
 PRIMARY KEY (ID));
-
+INSERT INTO album_release_year (id, last_update)
+VALUES
+	(1,now());
 DELIMITER //
-
 CREATE EVENT myevent
 ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10 second
-DO BEGIN
-      UPDATE music.album_release_year SET mycol = release_year + 10;
-
+DO begin
+      UPDATE music.album_release_year SET Last_update = Last_update + 10;
+show events from album_release_year;
 END//
-SHOW EVENTS from album_release_year;
-DELIMITER //
+DELIMITER ;
 -- Select data again after 10 seconds
 SELECT * FROM album_release_year;
+
 DROP TABLE album_release_year;      
 DROP EVENT myevent;
 
