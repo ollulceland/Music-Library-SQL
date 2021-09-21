@@ -214,9 +214,11 @@ DELIMITER //
 CREATE EVENT myevent
 ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10 second
 DO BEGIN
-      UPDATE music.album_release_year SET mycol = release_year + 1;
-show events from album_release_year;
+      UPDATE music.album_release_year SET mycol = release_year + 10;
+
 END//
+SHOW EVENTS from album_release_year;
+DELIMITER //
 -- Select data again after 10 seconds
 SELECT * FROM album_release_year;
 DROP TABLE album_release_year;      
