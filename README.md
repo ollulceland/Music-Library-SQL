@@ -36,7 +36,7 @@ Our goal is to create a music database with SQL programming.:grinning:
 - - - -- - - -
 * For this project, **MYSQL** engine and **WorkBench** IDE needs to be installed.
 ** The ER Diagram of the database.
-![2021-09-21](https://user-images.githubusercontent.com/67553615/134211659-403a43a8-6d63-4ff8-b385-5d469278e470.png)
+![2021-09-21 (2)](https://user-images.githubusercontent.com/67553615/134212066-3e8fc9c1-ede3-498b-8b93-b292072dfc92.png)
 
 
 
