@@ -197,9 +197,7 @@ SELECT * FROM artist;
 -- drop trigger before_insert;
 
 
--- Q9) Create an event and demonstrate how it works
--- Turn ON Event Scheduler
--- one time event
+-- Q9) Create an event and demonstrate how it works ??????
 
 SET GLOBAL event_scheduler = ON; -- enable event scheduler.
 USE music;
@@ -223,10 +221,11 @@ DELIMITER ;
 -- Select data again after 10 seconds
 SELECT * FROM monitoring_release_year;
 
-DROP TABLE monitoring_release_year;      
-DROP EVENT myevent;
+-- DROP TABLE monitoring_release_year;      
+-- DROP EVENT myevent;
 
--- Q10) Create a view that uses at least 3-4 base tables
+
+-- Q10) Create a view that uses at least 3-4 base tables (hmm...)
 -- Create view showing all pre2010 albums that cost at least £7.99
 
 CREATE VIEW pre2010 AS
@@ -253,5 +252,4 @@ FROM album al
 LEFT JOIN genre gen
 ON al.genre_ID = gen.genre_ID
 GROUP BY genre_name ORDER BY Count desc;
-
 
