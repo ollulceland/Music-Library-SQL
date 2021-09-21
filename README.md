@@ -34,8 +34,8 @@ Our goal is to create a music database with SQL programming.:grinning:
 - [x] Prepare an example query with group by and having to demonstrate how to extract data from your DB for analysis
 
 - - - -- - - -
-* For this project, **MYSQL** engine and **WorkBench** IDE needs to be installed.
-** The ER Diagram of the database.
+* For this project, **MYSQL** engine and **WorkBench** IDE needs to be installed. *
+** The ER Diagram of the database. **
 ![2021-09-21 (2)](https://user-images.githubusercontent.com/67553615/134212066-3e8fc9c1-ede3-498b-8b93-b292072dfc92.png)
 
 
