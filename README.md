@@ -2,7 +2,8 @@
 
 ## Project Brief:
 
-This is the final project of _Code First: Girls x Coding Kickstarter - (Remote) Introduction to Data and SQL Programming_. Our goal is to create a music database with SQL programming.
+This is the final project of _Code First: Girls x Coding Kickstarter - (Remote) Introduction to Data and SQL Programming_. \
+Our goal is to create a music database with SQL programming.:grinning:
 - - - -- - - -
 
 ### Minimum tasks include:
@@ -33,7 +34,7 @@ This is the final project of _Code First: Girls x Coding Kickstarter - (Remote) 
 - [x] Prepare an example query with group by and having to demonstrate how to extract data from your DB for analysis
 
 - - - -- - - -
-> For this project, **MYSQL** engine and **WorkBench** IDE needs to be installed.
+* For this project, **MYSQL** engine and **WorkBench** IDE needs to be installed.
 
 
 
