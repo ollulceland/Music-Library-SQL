@@ -251,5 +251,7 @@ SELECT genre_name, COUNT(album_ID) AS Count
 FROM album al
 LEFT JOIN genre gen
 ON al.genre_ID = gen.genre_ID
-GROUP BY genre_name ORDER BY Count desc;
+GROUP BY genre_name 
+HAVING Count >= 1
+ORDER BY Count desc;
 
